@@ -1,0 +1,30 @@
+{
+  "name": "esoftjoboffer",
+  "version": "1.0.0",
+  "description": "enterance examination for esoft.tech",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KucherenkoIvan/esoftJobOffer.git"
+  },
+  "keywords": [
+    "esoft",
+    "jobOffer"
+  ],
+  "author": "Kucherenko Ivan <stysha.72@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KucherenkoIvan/esoftJobOffer/issues"
+  },
+  "homepage": "https://github.com/KucherenkoIvan/esoftJobOffer#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.3.3"
+  }
+}
