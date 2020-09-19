@@ -1,5 +1,9 @@
 {
-    "POSTGRES_USER" : "admin",
-    "POSTGRES_PASSWORD" : "admin123",
-    "POSTGRES_DATABASE": "database"
+    "POSTGRES_USER" : "postgres",
+    "POSTGRES_PASSWORD" : "postgres",
+    "POSTGRES_DATABASE": "database",
+    "jwtSecret": "very strong secret",
+    "forceSync": false,
+    "cryptoKey": 13,
+    "port": 5000
 }
