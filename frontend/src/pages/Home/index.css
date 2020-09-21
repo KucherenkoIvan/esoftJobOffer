@@ -1,0 +1,26 @@
+.tasklist {
+    background-color: #1e1e1e;
+    width: 93%;
+}
+.toolBar {
+    padding: 1rem;
+    background-color: #252526;
+}
+#refresh {
+    background-color: transparent;
+    background-image: url('../../refresh.svg');
+    height: 16px;
+    border: none;
+    width: 16px;
+    filter: invert(0.5);
+    transition: 0.1s ease;
+}
+#refresh:hover {
+    filter: invert(0.9);
+    transition: 0.1s ease;
+}
+.pageWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}

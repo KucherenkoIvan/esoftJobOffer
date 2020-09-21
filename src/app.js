@@ -3,6 +3,7 @@ const express = require('express')
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const User = require('./models/User');
+const Task = require('./models/Task');
 
 
 const app = express()
@@ -34,5 +35,6 @@ const sequelize = new Sequelize(config.get('POSTGRES_DATABASE'),
         console.log('Connection has been established successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
+        process.exit(1)
       }
 })()

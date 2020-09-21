@@ -39,4 +39,6 @@ const User = sequelize.define('User', {
         tableName: 'User'
 })
 
+User.belongsTo(User, {foreignKey: 'Chief', targetKey: 'id'})
+
 module.exports = User
