@@ -1,0 +1,106 @@
+.cardsContainer {
+    max-height: 85%;
+    justify-self: end;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    grid-template-rows: repeat(auto-fill, 20rem);
+    background-color: transparent;
+    font-family: sans-serif;
+    overflow: hidden;
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.taskCard > .plus {
+    width: 6rem;
+    text-align: center;
+    font-size: 5rem;
+    border: 5px solid #999;
+    border-radius: 1000px;
+    align-self: center;
+    transition: 0.1s ease;
+}
+.taskCard:hover > .plus {
+    transition: 0.2s ease;
+    color: white;
+    border-color: white;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.red-text {
+    color: lightcoral !important;
+}
+
+.green-text {
+    color: lightgreen !important;
+}
+
+.grey-text {
+    color: silver !important;
+}
+
+.taskCardWrapper > h2, .taskCard b {
+    color: white;
+}
+.taskCard:hover {
+    box-shadow: 0px 0px 10px #333;
+}
+.taskCard {
+    background-color: #3c3c3c;
+    color: #999;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    padding: 1rem;
+    overflow: hidden;
+    margin: 1rem;
+}
+.taskCardWrapper::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    width: 110%;
+    height: 1px;
+    background-color: #999;
+    border-radius: 3px;
+}
+.taskCardWrapper {
+    align-self: center;
+    overflow: hidden;
+}
+.taskCard h2::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    width: 110%;
+    transform: translate(-110%, 0.35rem);
+    height: 2px;
+    background-color: grey;
+    transition: 0.2s ease-out;
+    z-index: 5;
+    border-radius: 3px;
+}
+.taskCard:hover h2::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    width: 110%;
+    height: 2px;
+    background-color: #08f;
+    transform: translate(0, 0.35rem);
+    transition: 0.2s ease-in;
+    z-index: 5;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px #08f;
+}

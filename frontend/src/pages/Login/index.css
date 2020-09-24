@@ -1,0 +1,139 @@
+/*main page container*/
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #252526;
+}
+
+/*errorbox*/
+.errorbox {
+    height: 2rem;
+    width: 100%;
+    font-size: 12px;
+    color: lightcoral
+}
+
+/*email and password inputs*/
+.loginInputs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: #333;
+    padding: 2rem;
+    color: white;
+}
+.loginInputs > input {
+    background-color: #3c3c3c;
+    border: 1px solid #656565;
+    padding: 0.3rem;
+    transition: 0.2s ease;
+    color: white;
+}
+.loginInputs > input:hover {
+    transition: 0.2s ease;
+    background-color: #37373d;
+}
+.loginInputs::placeholder {
+    transition: 0.2s ease;
+}
+.loginInputs > input:hover::placeholder {
+    transition: 0.2s ease;
+    color: #999
+}
+.loginInputs > input:focus {
+    transition: 0.2s ease;
+    border: 1px solid #06c;
+    box-shadow: 0px 0px 5px #06c;
+    outline: none;
+}
+.loginOptions > button {
+    transition: 0.2s ease;
+    background-color: transparent;
+    padding: 0.3rem 1rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    color: #999
+}
+.loginOptions > button:focus {
+    background-color: #37373d;
+    color: white;
+    outline: none;
+    box-shadow: 0px 0px 5px #06c;
+    border: 1px solid #06c;
+}
+
+/*submit and register*/
+.loginOptions> button:hover {
+    transition: 0.2s ease;
+    background-color: #37373d;
+    color: #f5f5f5
+}
+.loginOptions a {
+    color:  #06c;
+    transition: 0.2s ease;
+}
+.loginOptions a:hover {
+    color: #08f;
+    transition: 0.2s ease;
+}
+.loginOptions a:visited {
+    color: #76c
+}
+.loginOptions a:visited:hover {
+    color: #98f
+}
+.loginOptions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/*header and animations*/
+.headerWrapper {
+    align-self: center;
+    overflow: hidden;
+    width: 100%;
+}
+.headerWrapper::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    width: 110%;
+    height: 1px;
+    background-color: #656565;
+    border-radius: 3px;
+}
+.headerWrapper > h2::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    width: 110%;
+    transform: translate(-110%, 0.3rem);
+    height: 2px;
+    background-color: #656565;
+    transition: 0.2s ease-out;
+    z-index: 5;
+    border-radius: 3px;
+}
+*:focus-within > .headerWrapper > h2::after {
+    display: block;
+    position: relative;
+    content: '';
+    margin-left: -5%;
+    width: 110%;
+    height: 2px;
+    background-color: #08f;
+    transform: translate(0, 0.3rem);
+    transition: 0.2s ease-in;
+    z-index: 5;
+    border-radius: 3px;
+}
