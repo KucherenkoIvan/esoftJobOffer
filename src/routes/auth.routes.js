@@ -10,7 +10,7 @@ const router = Router()
 router.post('/login', async (req, res) => {
     try {
                 
-        if (req.body || !req.body.Login || !request.body.Password) {
+        if (!req.body || !req.body.Login || !request.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
@@ -58,7 +58,7 @@ router.post('/register', async (req, res) => {
     try {
 
 
-        if (req.body || !req.body.Login || !request.body.Password) {
+        if (!req.body || !req.body.Login || !request.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
