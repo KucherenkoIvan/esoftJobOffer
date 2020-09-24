@@ -1,9 +1,10 @@
 {
+    "POSTGRES_HOST" : "postgres-network-db",
     "POSTGRES_USER" : "postgres",
     "POSTGRES_PASSWORD" : "postgres",
     "POSTGRES_DATABASE": "database",
     "jwtSecret": "very strong secret",
-    "forceSync": false,
+    "forceSync": true,
     "cryptoKey": 13,
     "port": 5000
 }

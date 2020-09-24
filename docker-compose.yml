@@ -3,13 +3,10 @@ version: '3.1'
 networks:
   postgres:
     driver: bridge
-
 volumes:
   postgres-data:
-
-
 services:
-  db:
+  postgres-network-db:
     networks: 
       - postgres
     image: postgres
@@ -22,11 +19,9 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-
-  adminer:
-    image: adminer
-    restart: always
+  node-app:
     networks: 
       - postgres
+    build: .
     ports: 
-      - 8080:8080
+      - 5000:5000

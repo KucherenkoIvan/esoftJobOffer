@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const {Router} = require('express')
+const {Router, request} = require('express')
 const config = require('config')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -9,8 +9,8 @@ const router = Router()
 // /api/auth/
 router.post('/login', async (req, res) => {
     try {
-        const {Login, Password} = req.body
-        if (!Login || !Password) {
+                
+        if (req.body || !req.body.Login || !request.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
@@ -18,6 +18,7 @@ router.post('/login', async (req, res) => {
                 ]
             })
         }
+        const {Login, Password} = req.body
         const candidate = await User.findOne({where: {Login}})
         const candidatePassword = candidate.Password
         console.log({...candidate, Login, Password})
@@ -55,9 +56,9 @@ router.post('/login', async (req, res) => {
 // /api/auth
 router.post('/register', async (req, res) => {
     try {
-        const {FirstName, LastName, Surname, Login, Password} = req.body
 
-        if (!Login || !Password) {
+
+        if (req.body || !req.body.Login || !request.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
@@ -65,6 +66,10 @@ router.post('/register', async (req, res) => {
                 ]
             })
         }
+
+
+        const {FirstName, LastName, Surname, Login, Password} = req.body
+
 
         const hashedPassword = await bcrypt.hash(Password, config.get('cryptoKey'))
         let candidate = await User.findOne({where: {Login}})

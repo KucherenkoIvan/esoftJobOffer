@@ -5,8 +5,9 @@ const config = require('config')
 const sequelize = new Sequelize(config.get('POSTGRES_DATABASE'), 
     config.get('POSTGRES_USER'), 
     config.get('POSTGRES_PASSWORD'), {
-        host: 'localhost',
-        dialect: 'postgres'
+        host: config.get('POSTGRES_HOST'),
+        dialect: 'postgres',
+        logging: () => {}
     })
 
 const Task = sequelize.define('Task', {
@@ -46,7 +47,5 @@ const Task = sequelize.define('Task', {
         tableName: 'Task'
 })
 
-Task.belongsTo(User, {foreignKey: 'Sender', targetKey: 'id'})
-Task.belongsTo(User, {foreignKey: 'Receiver', targetKey: 'id'})
 
 module.exports = Task

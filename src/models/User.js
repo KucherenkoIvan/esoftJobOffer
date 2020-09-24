@@ -4,8 +4,9 @@ const config = require('config')
 const sequelize = new Sequelize(config.get('POSTGRES_DATABASE'), 
     config.get('POSTGRES_USER'), 
     config.get('POSTGRES_PASSWORD'), {
-        host: 'localhost',
-        dialect: 'postgres'
+        host: config.get('POSTGRES_HOST'),
+        dialect: 'postgres',
+        logging: () => {}
     })
 
 
@@ -39,6 +40,5 @@ const User = sequelize.define('User', {
         tableName: 'User'
 })
 
-User.belongsTo(User, {foreignKey: 'Chief', targetKey: 'id'})
 
 module.exports = User
