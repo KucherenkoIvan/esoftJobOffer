@@ -6,5 +6,5 @@
     "jwtSecret": "very strong secret",
     "forceSync": true,
     "cryptoKey": 13,
-    "port": 8080
+    "port": 5000
 }
