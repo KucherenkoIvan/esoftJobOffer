@@ -9,8 +9,9 @@ const router = Router()
 // /api/auth/
 router.post('/login', async (req, res) => {
     try {
+        console.log(req.body)
                 
-        if (!req.body || !req.body.Login || !request.body.Password) {
+        if (!req.body || !req.body.Login || !req.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
@@ -19,9 +20,8 @@ router.post('/login', async (req, res) => {
             })
         }
         const {Login, Password} = req.body
+        console.log(1)
         const candidate = await User.findOne({where: {Login}})
-        const candidatePassword = candidate.Password
-        console.log({...candidate, Login, Password})
         if (!candidate) { //пользователь не найден
             console.log('Пользователя с таким логином не существует')
             return res.status(500).json({
@@ -30,6 +30,7 @@ router.post('/login', async (req, res) => {
                 ]
             })
         }
+        const candidatePassword = candidate.Password
         if (!await bcrypt.compare(Password, candidatePassword)) { //пароли не совпали
             console.log('Некорректный пароль')
             return res.status(500).json({
@@ -58,7 +59,7 @@ router.post('/register', async (req, res) => {
     try {
 
 
-        if (!req.body || !req.body.Login || !request.body.Password) {
+        if (!req.body || !req.body.Login || !req.body.Password) {
             console.log('Введите логин и пароль')
             return res.status(500).json({
                 errors:[
@@ -68,14 +69,17 @@ router.post('/register', async (req, res) => {
         }
 
 
-        const {FirstName, LastName, Surname, Login, Password} = req.body
+        const {FirstName, LastName, Surname, Login, Password, confirmedPassword} = req.body
 
+        if (Password != confirmedPassword) {
+            return res.status(500).json({errors: [
+                {msg: 'Парооли доджны совпадать'}
+            ]})
+        }
 
         const hashedPassword = await bcrypt.hash(Password, config.get('cryptoKey'))
         let candidate = await User.findOne({where: {Login}})
-        console.log(candidate)
         if (candidate) {
-            console.log('Этот логин занят')
             return res.status(500).json({errors: [
                 {msg: 'Этот логин занят'}
             ]})
