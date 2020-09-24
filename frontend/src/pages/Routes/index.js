@@ -5,11 +5,9 @@ import Home from '../Home'
 import Placeholder from '../../components/placeholder'
 import Register from '../Register'
 import { AuthContext } from '../../context/auth.context';
+import Info from '../Info'
 
 export function Routes(props) {
-    // //setInterval(() => {console.log('router:', isAuthenticated)}, 1000)
-    // const {login, logout, token, userID} = useContext(AuthContext)
-    // console.log('routes: ', login, logout, token, userID)
     const {isAuthenticated} = useContext(AuthContext)
     if (isAuthenticated) {
         return (    
@@ -17,8 +15,8 @@ export function Routes(props) {
                 <Route path={'/home'} exact>
                     <Home/>
                 </Route>
-                <Route path={'/test'} exact>
-                    <Placeholder/>
+                <Route path={'/info'} exact>
+                    <Info/>
                 </Route>          
                 <Redirect to={'/home'}/>
             </Switch>
@@ -32,7 +30,7 @@ export function Routes(props) {
             <Route path={'/login'} exact>
                     <Login/>
             </Route>                
-            <Redirect to={'/register'}/>
+            <Redirect to={'/login'}/>
         </Switch>
     )
 }

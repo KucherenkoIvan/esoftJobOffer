@@ -8,7 +8,11 @@ const Task = require('./models/Task');
 
 const app = express()
 app.use(express.json())
+
+app.use('/api/task', require('./routes/task.routes'))
 app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/user', require('./routes/user.routes'))
+
 const PORT = config.get('port') || 3000
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
@@ -31,6 +35,7 @@ const sequelize = new Sequelize(config.get('POSTGRES_DATABASE'),
     try {
         await sequelize.authenticate();
         await sequelize.sync({force: config.get('forceSync')});
+        console.log(await Task.findAll())
         console.log(await User.findAll())
         console.log('Connection has been established successfully.');
       } catch (error) {

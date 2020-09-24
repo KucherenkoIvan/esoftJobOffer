@@ -6,15 +6,12 @@ export const useHttp = () => {
     const request = useCallback(async (url, method='GET', body=null, headers={}) => {
         try {
             setLoading(true)
-            console.log({method, body, headers})
-            const serverResponse = await fetch(url, {method, body: JSON.stringify(body), headers})
-            console.log({serverResponse})
+            const serverResponse = await fetch(url, {method, body: body ? JSON.stringify(body) : null, headers})
 
             const data = await serverResponse.json()
-            console.log({data})
 
             if (!serverResponse.ok) {
-                throw new Error(data.errors[0].msg || 'Неопознанная ошибка')
+                throw new Error(data.errors?.[0].msg || 'Неопознанная ошибка')
             }
 
             setLoading(false)

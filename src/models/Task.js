@@ -25,11 +25,13 @@ const Task = sequelize.define('Task', {
     },
     Priority: {
         type: Sequelize.ENUM,
-        values: ['низкий', 'средний', 'высокий']
+        values: ['низкий', 'средний', 'высокий'],
+        allowNull: false
     },
     Status: {
         type: Sequelize.ENUM,
-        values: ['к выполнению', 'выполняется', 'выполнена', 'отменена']
+        values: ['к выполнению', 'выполняется', 'выполнена', 'отменена'],
+        allowNull: false
     },
     Sender: {
         type: INTEGER,

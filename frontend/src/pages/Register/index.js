@@ -11,7 +11,7 @@ export default function Register(props) {
     const auth = useContext(AuthContext)
     const {loading, error, request} = useHttp()
 
-    const [inputData, setInputData] = useState({email: '', password: ''})
+    const [inputData, setInputData] = useState({})
     const [set, changeSet] = useState(true)
 
     const setChangeHandler = (e) => {
@@ -51,7 +51,7 @@ export default function Register(props) {
                 <div 
                     className='headerWrapper'
                 >
-                    <h2>Sign up</h2>
+                    <h2>Регистрация</h2>
                 </div>
 
 
@@ -64,19 +64,19 @@ export default function Register(props) {
                     >
                         <input 
                             name='Surname' 
-                            placeholder='surname' 
+                            placeholder='фамилия' 
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
                         <input 
                             name='FirstName' 
-                            placeholder='first name'
+                            placeholder='имя'
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
                         <input 
                             name='LastName' 
-                            placeholder='last name' 
+                            placeholder='отчество' 
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
@@ -92,7 +92,7 @@ export default function Register(props) {
                             onClick={setChangeHandler} 
                             disabled={!(inputData.FirstName && inputData.Surname)}
                         >
-                            Next
+                            Далее
                         </button>
                     </div>
 
@@ -101,21 +101,21 @@ export default function Register(props) {
                     >
                         <input 
                             name='Login' 
-                            placeholder='login' 
+                            placeholder='логин' 
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
                         <input 
                             name='Password' 
                             type='password' 
-                            placeholder='password'
+                            placeholder='пароль'
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
                         <input 
                             name='confirmedPassword' 
                             type='password' 
-                            placeholder='confirm password'
+                            placeholder='подтверждение пароля'
                             onChange={changeHandler} 
                             disabled={loading}
                         /><br/>
@@ -131,7 +131,7 @@ export default function Register(props) {
                             onClick={registerClickHandler} 
                             disabled={loading}
                         >
-                            Register
+                            Зарегистрироваться
                         </button>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ export default function Register(props) {
                     <Link 
                         to='/login'
                     >
-                        I have an account
+                        У меня уже есть аккаунт
                     </Link>
                 </div>
             </div>

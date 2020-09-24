@@ -1,0 +1,88 @@
+.modalWrapper {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal {
+    background-color: #333;
+    padding: 2rem;
+    display: flex;
+    flex-flow: column nowrap;    
+    color: #999
+}
+
+.modal > h2, .modal > label {
+    color: #f5f5f5
+}
+
+.max-width-30 {
+    max-width: 30rem;
+}
+
+.ModalButtons {
+    display: flex;
+    justify-content: space-between;
+}
+.ModalButtons > button {    
+    transition: 0.2s ease;
+    background-color: transparent;
+    padding: 0.3rem 1rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    color: #999
+}
+
+.ModalButtons > button:focus {
+    background-color: #37373d;
+    color: white;
+    outline: none;
+    box-shadow: 0px 0px 5px #06c;
+    border: 1px solid #06c;
+}
+.ModalButtons > button:hover {
+    transition: 0.2s ease;
+    background-color: #37373d;
+    color: #f5f5f5
+}
+
+.modal > textarea {
+    max-width: 30rem;
+    max-height: 10rem;
+}
+
+
+
+.modal > input, .modal > select, .modal > textarea {
+    background-color: #3c3c3c;
+    border: 1px solid #656565;
+    padding: 0.3rem;
+    transition: 0.2s ease;
+    color: white;
+}
+.modal > input:hover, .modal > select:hover, .modal > textarea:hover {
+    transition: 0.2s ease;
+    background-color: #37373d;
+}
+
+.modal > *::placeholder {  
+    transition: 0.2s ease;
+}
+.modal > *:hover::placeholder {
+    transition: 0.2s ease;
+    color: #999
+}
+
+.modal > *:focus {
+    transition: 0.2s ease;
+    border: 1px solid #06c;
+    box-shadow: 0px 0px 5px #06c;
+    outline: none;
+}
+
+.modal *:disabled {
+    opacity: 0.3;
+}

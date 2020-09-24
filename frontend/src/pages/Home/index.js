@@ -1,51 +1,58 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Navigation from '../../components/navigation'
 import { AuthContext } from '../../context/auth.context';
-import Axios from 'axios'
 import TaskCard from '../../components/taskCard';
-import './index.css'
 import Loading from '../../components/loading';
+import { useHttp } from '../../hooks/http.hook';
+import './index.css'
+import CreateTaskModal from '../../components/createTaskModal';
+import { ModalContext } from '../../context/modal.context';
 
 
 export default function Home(props) {
-    const {token, userID} = useContext(AuthContext)
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
-    // useEffect(() => {
-    //     console.log({token, userID})
-    //     console.log(Axios.post('/api/task', {sender: userID, title: `test ${Date.now()}`, shortcut: `created by ${userID}`, deadline: Date.now()}, {headers: {authorization: token}}).then(res => {return res}))
-    // }, [userID])        
+    const {token} = useContext(AuthContext)
+    const [data, setData] = useState(null)
+    const {loading, request} = useHttp()     
+    const [isModalVisible, setModalVisibility] = useState(false)
+    const [modalContext, setModalContext] = useState(null)
+    const [queryOption, setQueryOption] = useState('all')
+
     const getTasks = async () => {
         try {
-            setLoading(true)
-            const serverRespose = await Axios.get('/api/task', {headers: {authorization: token}})
-            const items = await serverRespose.data
+            const items = await request(`/api/task?group=${queryOption}`, 'GET', undefined, {authorization: token})
             setData([...items])
-            setLoading(false) 
         }
         catch (e) {
             console.error(e)
-            setLoading(false) 
         }
     }
-    useEffect(() => {getTasks()}, [])
+    useEffect(() => {getTasks()}, [isModalVisible, queryOption])
+    
     return (
         <div className='pageWrapper'>
             <Navigation/>
-            <div className='tasklist'>
-                <div className='toolBar'>
-                    <button onClick={getTasks} disabled={loading} id='refresh'></button>
+            <ModalContext.Provider value={{isModalVisible, setModalVisibility, modalContext, setModalContext}}>
+                <div className='tasklist'>
+                    <div className='toolBar'>
+                        <button onClick={() => setModalVisibility(true)} disabled={loading} >+</button>
+                        <select onChange={(e) => setQueryOption(e.target.value)}>
+                            <option value='all'>Без группировок</option>
+                            <option value='by_day'>На сегодня</option>
+                            <option value='by_week'>На неделю</option>
+                            <option value='by_ever'>На будущее</option>
+                            <option value='by_subs'>По ответственным</option>
+                        </select>
+                        <button onClick={getTasks} disabled={loading} id='refresh'></button>
+                    </div>
+                    <div className='cardsContainer'>
+                        {data?.map((item) => {
+                            return item ? (<TaskCard key={item.id} task={item}>{item.title}</TaskCard>) : ''
+                        })}
+                    </div>
                 </div>
-                <div className='cardsContainer'>
-                    {data.map((item) => {
-                        return (<TaskCard key={JSON.stringify(item)} task={item}>{item.title}</TaskCard>)
-                    })}
-                    <TaskCard>
-                        
-                    </TaskCard>
-                </div>
-            </div>
-            <Loading visible={loading}/>
+                <Loading visible={loading}/>
+                <CreateTaskModal/>
+            </ModalContext.Provider>
         </div>
     )
 }

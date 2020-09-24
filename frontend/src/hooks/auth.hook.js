@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import Axios from 'axios'
 
 
 export const useAuth = () => {
@@ -7,13 +6,12 @@ export const useAuth = () => {
     const [userID, setUserID] = useState(null)
 
     const login = useCallback((token, id) => {
-        console.log('login: ', {token, id})
         setToken(token)
         setUserID(id)
     })
     const logout = useCallback(() => {
-        token = undefined
-        console.log(token)
+        setToken(undefined)
+        setUserID(undefined)
     })
     return {login, logout, token, userID}
 }

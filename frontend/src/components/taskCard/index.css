@@ -31,6 +31,19 @@
     justify-content: center;
     justify-items: center;
 }
+
+.red-text {
+    color: lightcoral !important;
+}
+
+.green-text {
+    color: lightgreen !important;
+}
+
+.grey-text {
+    color: silver !important;
+}
+
 .taskCardWrapper > h2, .taskCard b {
     color: white;
 }
