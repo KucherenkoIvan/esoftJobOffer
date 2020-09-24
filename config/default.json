@@ -1,5 +1,5 @@
 {
-    "POSTGRES_HOST" : "postgres-network-db",
+    "POSTGRES_HOST" : "DATABASE",
     "POSTGRES_USER" : "postgres",
     "POSTGRES_PASSWORD" : "postgres",
     "POSTGRES_DATABASE": "database",
