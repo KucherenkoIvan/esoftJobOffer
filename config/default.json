@@ -1,8 +1,8 @@
 {
-    "POSTGRES_HOST" : "DATABASE",
-    "POSTGRES_USER" : "postgres",
-    "POSTGRES_PASSWORD" : "postgres",
-    "POSTGRES_DATABASE": "database",
+    "POSTGRES_HOST" : "ec2-3-248-4-172.eu-west-1.compute.amazonaws.com",
+    "POSTGRES_USER" : "iygihylccoyqjk",
+    "POSTGRES_PASSWORD" : "fe2f03453b49276f0c0b2c303733aad0c375e742e04b185ad807f2835783360b",
+    "POSTGRES_DATABASE": "d6rshcaluudr55",
     "jwtSecret": "very strong secret",
     "forceSync": true,
     "cryptoKey": 13,
