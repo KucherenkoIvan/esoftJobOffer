@@ -20,8 +20,8 @@ services:
     ports:
       - 5432:5432
   node-app:
+    image: kucherenkoivan/node-app
     networks: 
       - postgres
-    build: .
     ports: 
       - 5000:5000
