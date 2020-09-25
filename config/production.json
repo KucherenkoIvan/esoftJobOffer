@@ -4,6 +4,6 @@
     "POSTGRES_PASSWORD" : "fe2f03453b49276f0c0b2c303733aad0c375e742e04b185ad807f2835783360b",
     "POSTGRES_DATABASE": "d6rshcaluudr55",
     "jwtSecret": "very strong secret",
-    "forceSync": true,
+    "forceSync": false,
     "cryptoKey": 13
 }

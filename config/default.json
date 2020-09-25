@@ -5,6 +5,5 @@
     "POSTGRES_DATABASE": "database",
     "jwtSecret": "very strong secret",
     "forceSync": true,
-    "cryptoKey": 13,
-    "port": 5000
+    "cryptoKey": 13
 }
