@@ -6,5 +6,7 @@
 
 3) heroku_stable - версия, сконфигурированная для использования в heroku
 
+4) release - финальная версия
+
 # Heroku demo
   https://whisky-test-app.herokuapp.com/
