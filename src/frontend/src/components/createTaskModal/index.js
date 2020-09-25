@@ -37,9 +37,9 @@ export default function CreateTaskModal(props) {
             return t
         }
         let date = new Date(modalContext?.Deadline)
-        let dateString = `${date.getFullYear()}-${addZero(date.getMonth())}-${addZero(date.getDate())}T${addZero(date.getHours())}:${addZero(date.getMinutes())}`
+        let dateString = `${date.getFullYear()}-${addZero(date.getMonth()+1)}-${addZero(date.getDate())}T${addZero(date.getHours())}:${addZero(date.getMinutes())}`
         setInputData({...modalContext, Deadline:dateString})       
-    }, [modalContext])
+    }, [modalContext, isModalVisible])
 
     // функция "уборки" перед закрытием
     const cleanup = () => {
